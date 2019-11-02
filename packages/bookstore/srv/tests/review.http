@@ -1,0 +1,18 @@
+### Read reviews
+GET http://localhost:4004/catalog/Reviews
+### Create a review directly on the Review Service
+POST http://localhost:4003/reviews/Reviews
+Content-Type: application/json
+
+{
+  "ID": "{{$guid}}",
+  "subject": "Another",
+  "reviewer": "Maria",
+  "rating": 3,
+  "title": "Improvements Needed",
+  "text": "It is very hard to get started"
+}
+### Filter Reviews by reviewer Maria
+GET http://localhost:4004/catalog/Reviews?$filter=subject%20eq%20%27Subject%27
+### Read a specific review
+GET http://localhost:4004/catalog/Reviews('921432e2-7e5b-403a-9952-b1518c593dc2')

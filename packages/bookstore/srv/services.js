@@ -26,9 +26,14 @@ module.exports = async (srv) => {
   // delegate requests to reviews service
   srv.on('READ', 'Reviews', async (req) => {
     const { Reviews } = reviews_srv.entities
+    var results
 
     const tx = reviews_srv.transaction(req)
-    const results = await tx.read(Reviews)
+    if(req.query.SELECT.where !== undefined) {
+      results = await tx.read(Reviews).where(req.query.SELECT.where)
+    } else {
+      results = await tx.read(Reviews)
+    }
 
     return results
   })
