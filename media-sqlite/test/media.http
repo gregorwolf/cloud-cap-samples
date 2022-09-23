@@ -1,0 +1,50 @@
+### Requires REST Client for VS Code
+### https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+###
+@protocol = http
+@host = localhost
+@port = 4004
+@guid = 89446b04-5ae2-4f2e-ad39-5ecec9120e74
+### Read Pictures
+GET {{protocol}}://{{host}}:{{port}}/media-server/Media
+Authorization: Basic admin:
+
+### Create Picture with mediatype
+POST {{protocol}}://{{host}}:{{port}}/media-server/Media
+Authorization: Basic admin:
+Accept: application/json
+Content-Type: application/json
+
+{ 
+  "ID": "{{guid}}",
+  "mediaType": "image/png",
+  "fileName": "Test.png"
+}
+
+### Upload Binary PNG
+PUT {{protocol}}://{{host}}:{{port}}/media-server/Media({{guid}})/content
+Authorization: Basic admin:
+Content-Type: image/png
+
+< ./Test.png
+
+### Read Binary
+GET {{protocol}}://{{host}}:{{port}}/media-server/Media({{guid}})/content
+Authorization: Basic admin:
+
+### Delete Image
+DELETE {{protocol}}://{{host}}:{{port}}/media-server/Media({{guid}})
+Authorization: Basic admin:
+
+### Read Pictures from Draft Endpoint
+GET {{protocol}}://{{host}}:{{port}}/media-server/MediaWithDraft
+Authorization: Basic admin
+
+### Read Pictures like SAPUI5 1.105.0
+GET {{protocol}}://{{host}}:{{port}}/media-server/MediaWithDraft
+  ?$count=true
+  &$filter=(IsActiveEntity%20eq%20false%20or%20SiblingEntity/IsActiveEntity%20eq%20null)
+  &$select=HasActiveEntity,ID,IsActiveEntity,content,fileName&$skip=0
+  &$top=30
+Authorization: Basic admin
+### Fails with SQLITE_ERROR: no such column: mediaType 
