@@ -5,6 +5,9 @@
 @host = localhost
 @port = 4004
 @guid = 89446b04-5ae2-4f2e-ad39-5ecec9120e74
+### Read Metadata
+GET {{protocol}}://{{host}}:{{port}}/media-server/$metadata
+Authorization: Basic admin:
 ### Read Pictures
 GET {{protocol}}://{{host}}:{{port}}/media-server/Media
 Authorization: Basic admin:
