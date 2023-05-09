@@ -15,6 +15,7 @@
     "./fiori",
     "./hello",
     "./media",
+    "./media-sqlite",
     "./orders",
     "./loggers",
     "./reviews"
