@@ -47,4 +47,3 @@ GET {{protocol}}://{{host}}:{{port}}/media-server/MediaWithDraft
   &$select=HasActiveEntity,ID,IsActiveEntity,content,fileName&$skip=0
   &$top=30
 Authorization: Basic admin
-### Fails with SQLITE_ERROR: no such column: mediaType 
