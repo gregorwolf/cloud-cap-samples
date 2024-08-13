@@ -1,0 +1,8 @@
+###
+GET http://localhost:4004/browse/GenreHierarchy
+  ?$select=ID,drillState,name
+  &$expand=parent($select=ID,name)
+  &$count=true
+  &$skip=0
+  &$top=228
+  &$apply=com.sap.vocabularies.Hierarchy.v1.TopLevels(HierarchyNodes=$root/GenreHierarchy,HierarchyQualifier='GenresHierarchy',NodeProperty='ID',Levels=1)
