@@ -18,7 +18,7 @@ GET {{server}}/browse/$metadata
 # Browse Books as any user
 GET {{server}}/browse/ListOfBooks?
   # &$select=title,stock
-  &$expand=genre
+  &$expand=ListOfBooks/genre
   # &sap-language=de
 {{me}}
 
